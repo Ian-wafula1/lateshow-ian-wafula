@@ -6,6 +6,8 @@ class Appearance(db.Model, SerializerMixin):
     
     __tablename__ = 'appearances'
     
+    serialize_rules = ('-guest.appearances','-episode.appearances')
+    
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
     episode_id = db.Column(db.Integer, db.ForeignKey('episodes.id', ondelete='CASCADE'), nullable=False)
